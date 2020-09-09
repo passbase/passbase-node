@@ -1,6 +1,6 @@
 {
   "name": "@passbase/node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Passbase API client for NodeJS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -41,8 +41,8 @@
       "prettier --write"
     ]
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Passbase <developer@passbase.com>",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.13",
     "@types/node-fetch": "^2.5.7",
