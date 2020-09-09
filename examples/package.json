@@ -1,0 +1,7 @@
+{
+  "name": "passbase-sdk-examples",
+  "version": "1.0.0",
+  "dependencies": {
+    "passbase-sdk": "@passbase/node-sdk"
+  }
+}

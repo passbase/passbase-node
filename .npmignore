@@ -1,0 +1,9 @@
+.gitignore
+.prettierrc
+examples
+jest.config.js
+Makefile
+src
+tsconfig.json
+tslint-tsconfig.json
+tslint.json
