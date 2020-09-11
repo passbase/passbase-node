@@ -1,3 +1,5 @@
+![banner](https://passbase-sdk-banner.netlify.app/node.png)
+
 # Passbase Node SDK ![ci](https://github.com/passbase/passbase-node/workflows/ci/badge.svg)
 
 This package is a client meant to be used on the server-side to communicate with Passbase servers.
