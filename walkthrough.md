@@ -14,7 +14,7 @@ npm install @passbase/node --save
 const {PassbaseClient, PassbaseConfiguration} = require("@passbase/node");
 
 async function main() {
-  const apiKey = "[redacted]";
+  const apiKey = "{{YOUR_SECRET_API_KEY}}";
 
   const config = new PassbaseConfiguration({
     apiKey,
