@@ -5,13 +5,10 @@ import {
   ResponseFormats,
   SDK_NAME,
 } from "./configuration";
-import {
-  PassbaseError,
-  Method,
-  PassbaseResource,
-  PassbaseIdentity,
-  PassbaseProjectSettings,
-} from "./utils";
+import {PassbaseError, Method} from "./utils";
+import {Identity} from "./models/Identity";
+import {Resource} from "./models/Resource";
+import {ProjectSettings} from "./models/ProjectSettings";
 
 const API_KEY_HEADER = "X-API-KEY";
 
@@ -65,7 +62,7 @@ export class PassbaseClient {
    */
   public async listIdentities() {
     const identities: any[] = await this.fetchPassbaseAPI("/identities");
-    return identities.map(identity => new PassbaseIdentity(identity));
+    return identities.map(identity => new Identity(identity));
   }
 
   /**
@@ -75,7 +72,7 @@ export class PassbaseClient {
     const identity: any = await this.fetchPassbaseAPI(
       `/identity/${identityId}`,
     );
-    return new PassbaseIdentity(identity);
+    return new Identity(identity);
   }
 
   /**
@@ -85,7 +82,7 @@ export class PassbaseClient {
     const resources: any[] = await this.fetchPassbaseAPI(
       `/identity/${identityId}/resources`,
     );
-    return resources.map(resource => new PassbaseResource(resource));
+    return resources.map(resource => new Resource(resource));
   }
 
   /**
@@ -95,7 +92,7 @@ export class PassbaseClient {
     const resource: any = await this.fetchPassbaseAPI(
       `/identity/${identityId}/resource/${resourceId}`,
     );
-    return new PassbaseResource(resource);
+    return new Resource(resource);
   }
 
   /**
@@ -103,6 +100,6 @@ export class PassbaseClient {
    */
   public async getProjectSettings() {
     const settings: any = await this.fetchPassbaseAPI(`/settings`);
-    return new PassbaseProjectSettings(settings);
+    return new ProjectSettings(settings);
   }
 }
