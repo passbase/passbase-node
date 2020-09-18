@@ -12,6 +12,8 @@ import {ProjectSettings} from "./models/ProjectSettings";
 
 const API_KEY_HEADER = "X-API-KEY";
 
+type Cursor = {next: string | null};
+
 export class PassbaseClient {
   config: PassbaseConfiguration;
 
@@ -57,11 +59,28 @@ export class PassbaseClient {
     return response.text();
   }
 
+  private async getPaginatedData<T>(
+    getter: (cursor?: string) => Promise<{cursor: Cursor; data: T[]}>,
+  ): Promise<T[]> {
+    const results = [];
+    let cursor: Cursor | null = null;
+    let data: T[];
+    while (!cursor || cursor.next) {
+      ({cursor, data} = await getter(
+        cursor && cursor.next ? cursor.next : undefined,
+      ));
+      results.push(...data);
+    }
+    return results;
+  }
+
   /**
    * List authorized identities
    */
   public async listIdentities() {
-    const identities: any[] = await this.fetchPassbaseAPI("/identities");
+    const identities: any[] = await this.getPaginatedData(cursor =>
+      this.fetchPassbaseAPI("/identities", Method.Get, {cursor}),
+    );
     return identities.map(identity => new Identity(identity));
   }
 
@@ -79,8 +98,10 @@ export class PassbaseClient {
    * List identity resources
    */
   public async listIdentityResources(identityId: string) {
-    const resources: any[] = await this.fetchPassbaseAPI(
-      `/identity/${identityId}/resources`,
+    const resources: any[] = await this.getPaginatedData(cursor =>
+      this.fetchPassbaseAPI(`/identity/${identityId}/resources`, Method.Get, {
+        cursor,
+      }),
     );
     return resources.map(resource => new Resource(resource));
   }

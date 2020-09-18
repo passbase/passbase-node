@@ -48,16 +48,16 @@ export class Identity {
   created: Date;
   updated: Date;
   resources: Resource[];
-  watchlist: Watchlist;
+  watchlist: Watchlist | null;
 
   constructor(obj: any) {
     this.id = obj.id;
     this.status = obj.status;
-    this.created = new Date(obj.created_at * 1000);
-    this.updated = new Date(obj.reviewed_at * 1000);
+    this.created = new Date(obj.created * 1000);
+    this.updated = new Date(obj.updated * 1000);
     this.resources = obj.resources.map(
       (resource: any) => new Resource(resource),
     );
-    this.watchlist = obj.watchlist;
+    this.watchlist = obj.watchlist ? new Watchlist(obj.watchlist) : null;
   }
 }

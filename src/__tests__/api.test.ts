@@ -25,10 +25,13 @@ describe("can request data", () => {
     const fetchMock = jest
       .spyOn(client, "fetchPassbaseAPI")
       .mockImplementation(() => {
-        return [
-          {id: "fake_id1", resources: []},
-          {id: "fake_id2", resources: []},
-        ];
+        return {
+          data: [
+            {id: "fake_id1", resources: []},
+            {id: "fake_id2", resources: []},
+          ],
+          cursor: {next: null},
+        };
       });
     await client.listIdentities();
 
@@ -53,7 +56,10 @@ describe("can request data", () => {
     const fetchMock = jest
       .spyOn(client, "fetchPassbaseAPI")
       .mockImplementation(() => {
-        return [{id: "fake_resource_id1"}, {id: "fake_resource_id2"}];
+        return {
+          data: [{id: "fake_resource_id1"}, {id: "fake_resource_id2"}],
+          cursor: {next: null},
+        };
       });
     await client.listIdentityResources("fake_id");
 
