@@ -2,6 +2,8 @@
 
 # Passbase Node SDK ![ci](https://github.com/passbase/passbase-node/workflows/ci/badge.svg)
 
+Welcome to the Passbase Verifications API docs. This documentation will help you understand our models and the Verification API with its endpoints. Based on this you can build your own system (i.e. verification) and hook it up to Passbase.
+
 This package is a client meant to be used on the server-side to communicate with Passbase servers.
 You can find more information here: https://docs.passbase.com/server/api
 

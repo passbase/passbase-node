@@ -41,7 +41,7 @@ describe("can be initialized", () => {
       apiKey: "123",
     });
     expect(configuration.basePath).toBe(
-      "https://api.passbase.com/api/verification/v1",
+      "https://api.passbase.com/verification/v1",
     );
   });
 });

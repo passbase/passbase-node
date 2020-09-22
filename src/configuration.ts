@@ -34,6 +34,6 @@ export class PassbaseConfiguration {
     this.apiKey = param.apiKey;
     this.format = param.format || ResponseFormats.Json;
     this.basePath =
-      param.basePath || "https://api.passbase.com/api/verification/v1";
+      param.basePath || "https://api.passbase.com/verification/v1";
   }
 }

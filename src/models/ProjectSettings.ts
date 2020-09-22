@@ -1,6 +1,6 @@
 // tslint:disable: max-classes-per-file
 
-class UICustomizations {
+class Customizations {
   mainColor: string;
   buttonColor: string;
   fontFamily: string;
@@ -26,7 +26,7 @@ export class ProjectSettings {
   slug: string;
   environment: string;
   organization: string;
-  uiCustomizations: UICustomizations;
+  customizations: Customizations;
   verificationSteps: VerificationStep[];
 
   constructor(obj: any) {
@@ -34,7 +34,7 @@ export class ProjectSettings {
     this.slug = obj.slug;
     this.environment = obj.environment;
     this.organization = obj.organization;
-    this.uiCustomizations = new UICustomizations(obj.ui_customizations || {});
+    this.customizations = new Customizations(obj.customizations || {});
     this.verificationSteps = (obj.verification_steps || []).map(
       (step: any) => new VerificationStep(step),
     );

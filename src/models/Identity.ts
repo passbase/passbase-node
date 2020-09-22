@@ -34,7 +34,7 @@ class Watchlist {
   types: string[];
 
   constructor(obj: any) {
-    this.isClean = obj.is_clean;
+    this.isClean = obj.clean;
     this.listings = obj.listings;
     this.media = obj.media;
     this.sources = obj.sources;
