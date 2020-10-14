@@ -26,6 +26,7 @@ async function main() {
   const client = new PassbaseClient(config);
 
   const settings = await client.getProjectSettings();
+
   console.log(JSON.stringify(settings, null, 4));
 }
 

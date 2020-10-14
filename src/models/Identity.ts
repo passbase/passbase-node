@@ -1,6 +1,5 @@
-// tslint:disable: max-classes-per-file
-
-import {Resource} from "./Resource";
+import {IdentityResource} from "./IdentityResource";
+import {Watchlist} from "./Watchlist";
 
 enum IdentityStatus {
   Created = "created",
@@ -13,41 +12,12 @@ enum IdentityStatus {
   Declined = "declined",
 }
 
-type Listing = {
-  url: string;
-  name: string;
-  aml_types: string[];
-  listing_started_utc: string;
-};
-
-type Media = {
-  url: string;
-  date: string;
-  title: string;
-};
-
-class Watchlist {
-  isClean: boolean;
-  listings: {[x: string]: Listing};
-  media: Media[];
-  sources: string[];
-  types: string[];
-
-  constructor(obj: any) {
-    this.isClean = obj.clean;
-    this.listings = obj.listings;
-    this.media = obj.media;
-    this.sources = obj.sources;
-    this.types = obj.types;
-  }
-}
-
 export class Identity {
   id: string;
   status: IdentityStatus;
   created: Date;
   updated: Date;
-  resources: Resource[];
+  resources: IdentityResource[];
   watchlist: Watchlist | null;
 
   constructor(obj: any) {
@@ -56,7 +26,7 @@ export class Identity {
     this.created = new Date(obj.created * 1000);
     this.updated = new Date(obj.updated * 1000);
     this.resources = obj.resources.map(
-      (resource: any) => new Resource(resource),
+      (resource: any) => new IdentityResource(resource),
     );
     this.watchlist = obj.watchlist ? new Watchlist(obj.watchlist) : null;
   }

@@ -7,8 +7,8 @@ import {
 } from "./configuration";
 import {PassbaseError, Method} from "./utils";
 import {Identity} from "./models/Identity";
-import {Resource} from "./models/Resource";
 import {ProjectSettings} from "./models/ProjectSettings";
+import {Resource} from "./models/Resource";
 
 const API_KEY_HEADER = "X-API-KEY";
 
