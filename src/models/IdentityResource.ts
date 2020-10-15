@@ -1,7 +1,5 @@
-import {ResourceType, ResourceStatus} from "./Resource";
-
 export class IdentityResource {
-  type: ResourceType;
+  type: string;
   datapoints: {[x: string]: string};
 
   constructor(obj: any) {
