@@ -89,7 +89,7 @@ export class PassbaseClient {
    */
   public async getIdentity(identityId: string) {
     const identity: any = await this.fetchPassbaseAPI(
-      `/identity/${identityId}`,
+      `/identities/${identityId}`,
     );
     return new Identity(identity);
   }
@@ -99,7 +99,7 @@ export class PassbaseClient {
    */
   public async listIdentityResources(identityId: string) {
     const resources: any[] = await this.getPaginatedData(cursor =>
-      this.fetchPassbaseAPI(`/identity/${identityId}/resources`, Method.Get, {
+      this.fetchPassbaseAPI(`/identities/${identityId}/resources`, Method.Get, {
         cursor,
       }),
     );
@@ -111,7 +111,7 @@ export class PassbaseClient {
    */
   public async getIdentityResource(identityId: string, resourceId: string) {
     const resource: any = await this.fetchPassbaseAPI(
-      `/identity/${identityId}/resource/${resourceId}`,
+      `/identities/${identityId}/resource/${resourceId}`,
     );
     return new Resource(resource);
   }
