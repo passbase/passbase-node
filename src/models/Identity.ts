@@ -18,7 +18,7 @@ export class Identity {
   status: IdentityStatus;
   created: Date;
   updated: Date;
-  owner: IdentityOwner;
+  owner: IdentityOwner | null;
   score: number;
   resources: IdentityResource[];
   watchlist: Watchlist | null;
@@ -28,9 +28,9 @@ export class Identity {
     this.status = obj.status;
     this.created = new Date(obj.created * 1000);
     this.updated = new Date(obj.updated * 1000);
-    this.owner = new IdentityOwner(obj.owner);
+    this.owner = obj.owner ? new IdentityOwner(obj.owner) : null;
     this.score = obj.score;
-    this.resources = obj.resources.map(
+    this.resources = (obj.resources || []).map(
       (resource: any) => new IdentityResource(resource),
     );
     this.watchlist = obj.watchlist ? new Watchlist(obj.watchlist) : null;

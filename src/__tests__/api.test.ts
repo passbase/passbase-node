@@ -1,3 +1,4 @@
+/* tslint: disable */
 import {PassbaseConfiguration, PassbaseClient} from "../";
 
 const configuration = new PassbaseConfiguration({
@@ -26,10 +27,7 @@ describe("can request data", () => {
       .spyOn(client, "fetchPassbaseAPI")
       .mockImplementation(() => {
         return {
-          data: [
-            {id: "fake_id1", resources: []},
-            {id: "fake_id2", resources: []},
-          ],
+          data: [{id: "fake_id1", resources: [], owner: {}}, {id: "fake_id2"}],
           cursor: {next: null},
         };
       });
@@ -59,7 +57,7 @@ describe("can request data", () => {
         return {
           data: [
             {id: "fake_resource_id1", resource_files: []},
-            {id: "fake_resource_id2", resource_files: []},
+            {id: "fake_resource_id2"},
           ],
           cursor: {next: null},
         };

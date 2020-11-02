@@ -1,3 +1,4 @@
+/* tslint: disable */
 import {PassbaseConfiguration, ResponseFormats} from "../";
 
 describe("can be initialized", () => {

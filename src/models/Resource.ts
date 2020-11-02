@@ -22,7 +22,7 @@ export class Resource {
     this.step = obj.step;
     this.created = new Date(obj.created * 1000);
     this.updated = new Date(obj.updated * 1000);
-    this.resourceFiles = obj.resource_files.map(
+    this.resourceFiles = (obj.resource_files || []).map(
       (resourceFile: any) => new ResourceFile(resourceFile),
     );
   }
