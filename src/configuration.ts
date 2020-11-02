@@ -1,6 +1,6 @@
 import {PassbaseError} from "./utils";
 // @ts-ignore
-import {name, version} from "../package.json";
+import {version} from "../package.json";
 
 export interface ConfigurationParameters {
   apiKey: string;
@@ -13,7 +13,7 @@ export enum ResponseFormats {
   Xml = "application/xml",
 }
 
-export const SDK_NAME = `${name}@${version}`;
+export const SDK_NAME = `node@${version}`;
 export class PassbaseConfiguration {
   readonly apiKey: string;
   readonly format: ResponseFormats;
