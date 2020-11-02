@@ -1,3 +1,4 @@
+import {IdentityOwner} from "./IdentityOwner";
 import {IdentityResource} from "./IdentityResource";
 import {Watchlist} from "./Watchlist";
 
@@ -17,6 +18,8 @@ export class Identity {
   status: IdentityStatus;
   created: Date;
   updated: Date;
+  owner: IdentityOwner;
+  score: number;
   resources: IdentityResource[];
   watchlist: Watchlist | null;
 
@@ -25,6 +28,8 @@ export class Identity {
     this.status = obj.status;
     this.created = new Date(obj.created * 1000);
     this.updated = new Date(obj.updated * 1000);
+    this.owner = new IdentityOwner(obj.owner);
+    this.score = obj.score;
     this.resources = obj.resources.map(
       (resource: any) => new IdentityResource(resource),
     );
