@@ -1,4 +1,4 @@
-1. Add @passbase/node npm package to your package.json. Passbase has no dependency but expects node version to be LTS (12.x).
+1. Add @passbase/node npm package to your package.json. Passbase has no dependency but expects node version to be `>=12.x`
 
 ```sh
 # yarn
