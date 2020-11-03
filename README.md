@@ -53,3 +53,50 @@ make release-patch
 make release-minor
 make release-major
 ```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *https://api.passbase.com/verification/v1*
+
+| Class                         | Method                                                                     | HTTP request                                   | Description          |
+| ----------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- |
+| _VerificationApi.IdentityApi_ | [**getIdentityById**](docs/IdentityApi.md#getIdentityById)                 | **GET** /identities/{id}                       | Get identity         |
+| _VerificationApi.IdentityApi_ | [**getIdentityResourceById**](docs/IdentityApi.md#getIdentityResourceById) | **GET** /identity/{id}/resources/{resource_id} | Get resource         |
+| _VerificationApi.IdentityApi_ | [**listIdentities**](docs/IdentityApi.md#listIdentities)                   | **GET** /identities                            | List identities      |
+| _VerificationApi.IdentityApi_ | [**listIdentityResources**](docs/IdentityApi.md#listIdentityResources)     | **GET** /identity/{id}/resources               | List resources       |
+| _VerificationApi.ProjectApi_  | [**getSettings**](docs/ProjectApi.md#getSettings)                          | **GET** /settings                              | Get project settings |
+
+## Documentation for Models
+
+- [VerificationApi.Cursor](docs/Cursor.md)
+- [VerificationApi.Identity](docs/Identity.md)
+- [VerificationApi.IdentityOwner](docs/IdentityOwner.md)
+- [VerificationApi.IdentityResource](docs/IdentityResource.md)
+- [VerificationApi.PaginatedIdentities](docs/PaginatedIdentities.md)
+- [VerificationApi.PaginatedResources](docs/PaginatedResources.md)
+- [VerificationApi.ProjectSettings](docs/ProjectSettings.md)
+- [VerificationApi.ProjectSettingsCustomizations](docs/ProjectSettingsCustomizations.md)
+- [VerificationApi.ProjectSettingsVerificationSteps](docs/ProjectSettingsVerificationSteps.md)
+- [VerificationApi.Resource](docs/Resource.md)
+- [VerificationApi.ResourceFile](docs/ResourceFile.md)
+- [VerificationApi.ResourceInput](docs/ResourceInput.md)
+- [VerificationApi.User](docs/User.md)
+- [VerificationApi.WatchlistResponse](docs/WatchlistResponse.md)
+
+## Documentation for Authorization
+
+### IdentityAccessToken
+
+- **Type**: Bearer authentication (JWT)
+
+### PublishableApiKey
+
+- **Type**: API key
+- **API key parameter name**: X-API-KEY
+- **Location**: HTTP header
+
+### SecretApiKey
+
+- **Type**: API key
+- **API key parameter name**: X-API-KEY
+- **Location**: HTTP header
