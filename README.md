@@ -36,24 +36,6 @@ main().catch(err => {
 });
 ```
 
-## How to develop
-
-You need to have node LTS installed.
-
-Then run: `make dev`
-
-This will install dependencies and start the tests watcher.
-
-## How to release
-
-Run **one** of the following commands
-
-```
-make release-patch
-make release-minor
-make release-major
-```
-
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.passbase.com/verification/v1*
