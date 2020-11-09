@@ -87,11 +87,19 @@ export class PassbaseClient {
   /**
    * Get identity
    */
-  public async getIdentity(identityId: string) {
+  public async getIdentityById(identityId: string) {
     const identity: any = await this.fetchPassbaseAPI(
       `/identities/${identityId}`,
     );
     return new Identity(identity);
+  }
+
+  /**
+   *
+   * @deprecated Use {getIdentityById} instead
+   */
+  public async getIdentity(identityId: string) {
+    return this.getIdentityById(identityId);
   }
 
   /**
@@ -109,7 +117,7 @@ export class PassbaseClient {
   /**
    * Get resource
    */
-  public async getIdentityResource(identityId: string, resourceId: string) {
+  public async getIdentityResourceById(identityId: string, resourceId: string) {
     const resource: any = await this.fetchPassbaseAPI(
       `/identity/${identityId}/resources/${resourceId}`,
     );
@@ -119,8 +127,16 @@ export class PassbaseClient {
   /**
    * Get project settings
    */
-  public async getProjectSettings() {
+  public async getSettings() {
     const settings: any = await this.fetchPassbaseAPI(`/settings`);
     return new ProjectSettings(settings);
+  }
+
+  /**
+   *
+   * @deprecated Use {getSettings} instead
+   */
+  public async getProjectSettings() {
+    return this.getSettings();
   }
 }

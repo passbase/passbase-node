@@ -44,9 +44,11 @@ describe("can request data", () => {
       .mockImplementation(() => {
         return {id: "fake_id", resources: []};
       });
+    await client.getIdentityById("fake_id");
     await client.getIdentity("fake_id");
 
     expect(fetchMock.mock.calls[0][0]).toBe("/identities/fake_id");
+    expect(fetchMock.mock.calls[1][0]).toBe("/identities/fake_id");
     fetchMock.mockClear();
   });
 
@@ -74,7 +76,7 @@ describe("can request data", () => {
       .mockImplementation(() => {
         return {id: "fake_resource_id1", resource_files: []};
       });
-    await client.getIdentityResource("fake_id", "fake_resource_id1");
+    await client.getIdentityResourceById("fake_id", "fake_resource_id1");
 
     expect(fetchMock.mock.calls[0][0]).toBe(
       "/identity/fake_id/resources/fake_resource_id1",
@@ -88,9 +90,11 @@ describe("can request data", () => {
       .mockImplementation(() => {
         return {id: "fake_id"};
       });
+    await client.getSettings();
     await client.getProjectSettings();
 
     expect(fetchMock.mock.calls[0][0]).toBe("/settings");
+    expect(fetchMock.mock.calls[1][0]).toBe("/settings");
     fetchMock.mockClear();
   });
 });
