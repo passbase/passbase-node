@@ -1,6 +1,6 @@
 {
   "name": "@passbase/node",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Passbase API client for NodeJS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
