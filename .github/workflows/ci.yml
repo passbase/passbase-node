@@ -1,5 +1,7 @@
 name: ci
 on:
+  schedule:
+    - cron: 0 9 * * *
   push:
     branches:
       - master
@@ -26,7 +28,11 @@ jobs:
             ${{ runner.OS }}-
 
       - run: npm install
+
       - run: make test
+        env:
+          PASSBASE_SECRET_API_KEY: ${{ secrets.PASSBASE_SECRET_API_KEY }}
+
       - run: npm run build
 
       - name: NPM Publish
