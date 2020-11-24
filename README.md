@@ -40,13 +40,14 @@ main().catch(err => {
 
 All URIs are relative to *https://api.passbase.com/verification/v1*
 
-| Class                         | Method                                                                     | HTTP request                                   | Description          |
-| ----------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- |
-| _VerificationApi.IdentityApi_ | [**getIdentityById**](docs/IdentityApi.md#getIdentityById)                 | **GET** /identities/{id}                       | Get identity         |
-| _VerificationApi.IdentityApi_ | [**getIdentityResourceById**](docs/IdentityApi.md#getIdentityResourceById) | **GET** /identity/{id}/resources/{resource_id} | Get resource         |
-| _VerificationApi.IdentityApi_ | [**listIdentities**](docs/IdentityApi.md#listIdentities)                   | **GET** /identities                            | List identities      |
-| _VerificationApi.IdentityApi_ | [**listIdentityResources**](docs/IdentityApi.md#listIdentityResources)     | **GET** /identity/{id}/resources               | List resources       |
-| _VerificationApi.ProjectApi_  | [**getSettings**](docs/ProjectApi.md#getSettings)                          | **GET** /settings                              | Get project settings |
+| Class                         | Method                                                                             | HTTP request                                                                     | Description          |
+| ----------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------- |
+| _VerificationApi.IdentityApi_ | [**getIdentityById**](docs/IdentityApi.md#getIdentityById)                         | **GET** /identities/{id}                                                         | Get identity         |
+| _VerificationApi.IdentityApi_ | [**getIdentityResourceById**](docs/IdentityApi.md#getIdentityResourceById)         | **GET** /identity/{id}/resources/{resource_id}                                   | Get resource         |
+| _VerificationApi.IdentityApi_ | [**getIdentityResourceFileById**](docs/IdentityApi.md#getIdentityResourceFileById) | **GET** /identity/{id}/resources/{resource_id}/resource_files/{resource_file_id} | Get resource file    |
+| _VerificationApi.IdentityApi_ | [**listIdentities**](docs/IdentityApi.md#listIdentities)                           | **GET** /identities                                                              | List identities      |
+| _VerificationApi.IdentityApi_ | [**listIdentityResources**](docs/IdentityApi.md#listIdentityResources)             | **GET** /identity/{id}/resources                                                 | List resources       |
+| _VerificationApi.ProjectApi_  | [**getSettings**](docs/ProjectApi.md#getSettings)                                  | **GET** /settings                                                                | Get project settings |
 
 ## Documentation for Models
 

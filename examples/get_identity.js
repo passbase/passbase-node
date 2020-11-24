@@ -13,7 +13,7 @@ async function main() {
   });
   const client = new PassbaseClient(config);
 
-  const identity = await client.getIdentity(
+  const identity = await client.getIdentityById(
     "00000000-0000-0000-0000-000000000000",
   );
   console.log(JSON.stringify(identity, null, 4));

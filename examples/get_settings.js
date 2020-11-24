@@ -13,7 +13,7 @@ async function main() {
   });
   const client = new PassbaseClient(config);
 
-  const settings = await client.getProjectSettings();
+  const settings = await client.getSettings();
   console.log(JSON.stringify(settings, null, 4));
 }
 

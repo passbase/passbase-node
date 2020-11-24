@@ -9,6 +9,7 @@ import {PassbaseError, Method} from "./utils";
 import {Identity} from "./models/Identity";
 import {ProjectSettings} from "./models/ProjectSettings";
 import {Resource} from "./models/Resource";
+import {IdentityResourceFile} from "./models/IdentityResourceFile";
 
 const API_KEY_HEADER = "X-API-KEY";
 
@@ -122,6 +123,20 @@ export class PassbaseClient {
       `/identity/${identityId}/resources/${resourceId}`,
     );
     return new Resource(resource);
+  }
+
+  /**
+   * Get resource
+   */
+  public async getIdentityResourceFileById(
+    identityId: string,
+    resourceId: string,
+    resourceFileId: string,
+  ) {
+    const resourceFile: any = await this.fetchPassbaseAPI(
+      `/identity/${identityId}/resources/${resourceId}/resource_files/${resourceFileId}`,
+    );
+    return new IdentityResourceFile(resourceFile);
   }
 
   /**

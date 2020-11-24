@@ -13,11 +13,12 @@ async function main() {
   });
   const client = new PassbaseClient(config);
 
-  const resource = await client.getIdentityResourceById(
+  const resourceFile = await client.getIdentityResourceFileById(
     "00000000-0000-0000-0000-000000000000",
     "00000000-0000-0000-0000-000000000001",
+    "00000000-0000-0000-0000-000000000002",
   );
-  console.log(JSON.stringify(resource, null, 4));
+  console.log(JSON.stringify(resourceFile, null, 4));
 }
 
 main().catch(err => {

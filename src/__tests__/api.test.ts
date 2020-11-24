@@ -84,6 +84,24 @@ describe("can request data", () => {
     fetchMock.mockClear();
   });
 
+  it("gets a specific identity resource file", async () => {
+    const fetchMock = jest
+      .spyOn(client, "fetchPassbaseAPI")
+      .mockImplementation(() => {
+        return {id: "fake_resource_file_id1", file: "123"};
+      });
+    await client.getIdentityResourceFileById(
+      "fake_id",
+      "fake_resource_id1",
+      "fake_resource_file_id1",
+    );
+
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "/identity/fake_id/resources/fake_resource_id1/resource_files/fake_resource_file_id1",
+    );
+    fetchMock.mockClear();
+  });
+
   it("gets project settings", async () => {
     const fetchMock = jest
       .spyOn(client, "fetchPassbaseAPI")

@@ -2,12 +2,13 @@
 
 All URIs are relative to *https://api.passbase.com/verification/v1*
 
-| Method                                                                | HTTP request                                   | Description     |
-| --------------------------------------------------------------------- | ---------------------------------------------- | --------------- |
-| [**getIdentityById**](IdentityApi.md#getIdentityById)                 | **GET** /identities/{id}                       | Get identity    |
-| [**getIdentityResourceById**](IdentityApi.md#getIdentityResourceById) | **GET** /identity/{id}/resources/{resource_id} | Get resource    |
-| [**listIdentities**](IdentityApi.md#listIdentities)                   | **GET** /identities                            | List identities |
-| [**listIdentityResources**](IdentityApi.md#listIdentityResources)     | **GET** /identity/{id}/resources               | List resources  |
+| Method                                                                        | HTTP request                                                                     | Description       |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------- |
+| [**getIdentityById**](IdentityApi.md#getIdentityById)                         | **GET** /identities/{id}                                                         | Get identity      |
+| [**getIdentityResourceById**](IdentityApi.md#getIdentityResourceById)         | **GET** /identity/{id}/resources/{resource_id}                                   | Get resource      |
+| [**getIdentityResourceFileById**](IdentityApi.md#getIdentityResourceFileById) | **GET** /identity/{id}/resources/{resource_id}/resource_files/{resource_file_id} | Get resource file |
+| [**listIdentities**](IdentityApi.md#listIdentities)                           | **GET** /identities                                                              | List identities   |
+| [**listIdentityResources**](IdentityApi.md#listIdentityResources)             | **GET** /identity/{id}/resources                                                 | List resources    |
 
 ## getIdentityById
 
@@ -101,6 +102,62 @@ client.getIdentityResourceById(id, resourceId).then(
 | -------------- | ---------- | ----------- | ----- |
 | **id**         | **String** | Identity id |
 | **resourceId** | **String** | Resource id |
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[SecretApiKey](../README.md#SecretApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getIdentityResourceFileById
+
+> Resource getIdentityResourceFileById(id, resourceId)
+
+Get resource
+
+Get a resource attached to an identity by providing the resource ID.
+
+### Example
+
+```javascript
+const {
+  PassbaseClient,
+  PassbaseConfiguration,
+  ResponseFormats,
+} = require("@passbase/node");
+const apiKey = "[redacted]";
+const config = new PassbaseConfiguration({
+  apiKey,
+  format: ResponseFormats.Json,
+});
+const client = new PassbaseClient(config);
+let id = "id_example"; // String | Identity id
+let resourceId = "resourceId_example"; // String | Resource id
+let resourceFileId = "resourceFileId_example"; // String | ResourceFile id
+client.getIdentityResourceFileById(id, resourceId, resourcefileId).then(
+  data => {
+    console.log("API called successfully. Returned data: " + data);
+  },
+  error => {
+    console.error(error);
+  },
+);
+```
+
+### Parameters
+
+| Name               | Type       | Description     | Notes |
+| ------------------ | ---------- | --------------- | ----- |
+| **id**             | **String** | Identity id     |
+| **resourceId**     | **String** | Resource id     |
+| **resourceFileId** | **String** | ResourceFile id |
 
 ### Return type
 
