@@ -52,7 +52,12 @@ export class PassbaseClient {
     });
 
     if (!response.ok) {
-      throw new PassbaseError(await response.text());
+      const errorText = (await response.text()).trim();
+      throw new PassbaseError(
+        `Request failed with status=${response.status}${
+          errorText ? `\n${errorText}` : ""
+        }`,
+      );
     }
     if (this.config.format === ResponseFormats.Json) {
       return response.json();
