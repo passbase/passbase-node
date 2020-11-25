@@ -147,10 +147,10 @@ export class PassbaseClient {
     resourceId: string,
     resourceFileId: string,
   ) {
-    const resourceFile: any = await this.fetchPassbaseAPI(
+    const resourceFile: Buffer = await this.fetchPassbaseAPI(
       `/identity/${identityId}/resources/${resourceId}/resource_files/${resourceFileId}`,
     );
-    return new IdentityResourceFile(resourceFile);
+    return resourceFile;
   }
 
   /**
