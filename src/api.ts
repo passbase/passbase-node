@@ -59,7 +59,16 @@ export class PassbaseClient {
         }`,
       );
     }
-    if (this.config.format === ResponseFormats.Json) {
+    if (
+      response.headers.get("Content-Type")?.includes("application/octet-stream")
+    ) {
+      return response.buffer();
+    }
+
+    if (
+      response.headers.get("Content-Type")?.includes("application/json") &&
+      this.config.format === ResponseFormats.Json
+    ) {
       return response.json();
     }
     return response.text();
