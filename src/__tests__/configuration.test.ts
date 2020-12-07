@@ -15,7 +15,7 @@ describe("can be initialized", () => {
     }).toThrow(/apiKey/);
   });
 
-  it("checks if the format is present", () => {
+  xit("checks if the format is present", () => {
     const configuration = new PassbaseConfiguration({
       apiKey: "123",
       format: ResponseFormats.Xml,

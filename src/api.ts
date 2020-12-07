@@ -9,7 +9,6 @@ import {PassbaseError, Method} from "./utils";
 import {Identity} from "./models/Identity";
 import {ProjectSettings} from "./models/ProjectSettings";
 import {Resource} from "./models/Resource";
-import {IdentityResourceFile} from "./models/IdentityResourceFile";
 
 const API_KEY_HEADER = "X-API-KEY";
 
@@ -22,6 +21,13 @@ export class PassbaseClient {
     if (!config) {
       throw new PassbaseError("missing configuration object");
     }
+
+    if (config.format === ResponseFormats.Xml) {
+      throw new PassbaseError(
+        "XML format not yet available, please use ResponseFormats.Json for now",
+      );
+    }
+
     this.config = config;
   }
 
@@ -60,17 +66,23 @@ export class PassbaseClient {
       );
     }
     if (
-      response.headers.get("Content-Type")?.includes("application/octet-stream")
-    ) {
-      return response.buffer();
-    }
-
-    if (
       response.headers.get("Content-Type")?.includes("application/json") &&
       this.config.format === ResponseFormats.Json
     ) {
       return response.json();
     }
+
+    if (
+      this.config.format === ResponseFormats.Xml &&
+      response.headers.get("Content-Type")?.includes("xml")
+    ) {
+      return response.text();
+    }
+
+    if (response.headers.get("Content-Type")) {
+      return response.blob();
+    }
+
     return response.text();
   }
 
@@ -147,7 +159,7 @@ export class PassbaseClient {
     resourceId: string,
     resourceFileId: string,
   ) {
-    const resourceFile: Buffer = await this.fetchPassbaseAPI(
+    const resourceFile: Blob = await this.fetchPassbaseAPI(
       `/identity/${identityId}/resources/${resourceId}/resource_files/${resourceFileId}`,
     );
     return resourceFile;

@@ -18,7 +18,7 @@ async function main() {
     "00000000-0000-0000-0000-000000000001",
     "00000000-0000-0000-0000-000000000002",
   );
-  console.log(JSON.stringify(resourceFile, null, 4));
+  console.log(resourceFile);
 }
 
 main().catch(err => {
