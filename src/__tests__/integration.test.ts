@@ -28,8 +28,8 @@ describe("can request data", () => {
     expect(identity.id).toBe("c6b7e897-ce5e-4769-8938-76cb69d0802c");
     expect(identity.owner).toEqual({
       email: "nicolas@passbase.com",
-      firstName: "",
-      lastName: "",
+      firstName: "NICOLAS",
+      lastName: "BRUGNEAUX",
     });
   });
 
