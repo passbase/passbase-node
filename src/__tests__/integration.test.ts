@@ -18,7 +18,7 @@ describe("can request data", () => {
 
   it("gets identities", async () => {
     const list = await client.listIdentities();
-    expect(list.length).toBe(2);
+    expect(list.length).toBe(3);
   });
 
   it("gets 1 identity", async () => {
@@ -51,15 +51,12 @@ describe("can request data", () => {
   });
 
   it("doesnt get 1 identity resource file", async () => {
-    expect(
-      async () =>
-        await client.getIdentityResourceFileById(
-          "c6b7e897-ce5e-4769-8938-76cb69d0802c",
-          "44d9c186-5c08-4128-a893-10c1edcb6d28",
-          "82ac204f-782d-4f06-9491-da2342f6bf24",
-        ),
-    ).rejects.toEqual(
-      new Error("[passbase-sdk]: Request failed with status=401"),
+    const result = await client.getIdentityResourceFileById(
+      "c6b7e897-ce5e-4769-8938-76cb69d0802c",
+      "44d9c186-5c08-4128-a893-10c1edcb6d28",
+      "82ac204f-782d-4f06-9491-da2342f6bf24",
     );
+    expect(result.type).toBe("image/png");
+    expect(result.size).toBe(652379);
   });
 });
