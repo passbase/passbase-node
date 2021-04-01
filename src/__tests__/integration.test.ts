@@ -18,45 +18,45 @@ describe("can request data", () => {
 
   it("gets identities", async () => {
     const list = await client.listIdentities();
-    expect(list.length).toBe(3);
+    expect(list.length).toBe(10);
   });
 
   it("gets 1 identity", async () => {
     const identity = await client.getIdentityById(
-      "c6b7e897-ce5e-4769-8938-76cb69d0802c",
+      "0f4725ae-0877-4121-b892-eb77b5768c6e",
     );
-    expect(identity.id).toBe("c6b7e897-ce5e-4769-8938-76cb69d0802c");
+    expect(identity.id).toBe("0f4725ae-0877-4121-b892-eb77b5768c6e");
     expect(identity.owner).toEqual({
-      email: "nicolas@passbase.com",
-      firstName: "NICOLAS",
-      lastName: "BRUGNEAUX",
+      email: "server-side-sdk-tester@passbase.com",
+      firstName: "AASAMUND SPECIMEN",
+      lastName: "OESTENBYEN",
     });
   });
 
-  it("gets 1 identity resources", async () => {
+  it("gets 1 identity's resources", async () => {
     const resources = await client.listIdentityResources(
-      "c6b7e897-ce5e-4769-8938-76cb69d0802c",
+      "0f4725ae-0877-4121-b892-eb77b5768c6e",
     );
     expect(resources.length).toBe(1);
     expect(resources[0].type).toBe("PASSPORT");
   });
 
-  it("gets 1 identity resources", async () => {
+  it("gets 1 resource", async () => {
     const resource = await client.getIdentityResourceById(
-      "c6b7e897-ce5e-4769-8938-76cb69d0802c",
-      "44d9c186-5c08-4128-a893-10c1edcb6d28",
+      "0f4725ae-0877-4121-b892-eb77b5768c6e",
+      "ac3f51ff-02c8-4179-b3c6-4e915ffd6dc2",
     );
-    expect(resource.id).toBe("44d9c186-5c08-4128-a893-10c1edcb6d28");
+    expect(resource.id).toBe("ac3f51ff-02c8-4179-b3c6-4e915ffd6dc2");
     expect(resource.type).toBe("PASSPORT");
   });
 
   it("doesnt get 1 identity resource file", async () => {
     const result = await client.getIdentityResourceFileById(
-      "c6b7e897-ce5e-4769-8938-76cb69d0802c",
-      "44d9c186-5c08-4128-a893-10c1edcb6d28",
-      "82ac204f-782d-4f06-9491-da2342f6bf24",
+      "0f4725ae-0877-4121-b892-eb77b5768c6e",
+      "ac3f51ff-02c8-4179-b3c6-4e915ffd6dc2",
+      "1aed2e1b-ca2f-4142-8cf6-29701586fec9",
     );
     expect(result.type).toBe("image/png");
-    expect(result.size).toBe(652379);
+    expect(result.size).toBeGreaterThanOrEqual(640000);
   });
 });
