@@ -1,5 +1,9 @@
 {
   "name": "@passbase/node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/passbase/passbase-node.git"
+  },
   "version": "1.2.4",
   "description": "Passbase API client for NodeJS",
   "main": "lib/index.js",
