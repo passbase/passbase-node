@@ -6,6 +6,7 @@ export interface ConfigurationParameters {
   apiKey: string;
   format?: ResponseFormats;
   basePath?: string;
+  version?: string;
 }
 
 export enum ResponseFormats {
@@ -19,7 +20,7 @@ export class PassbaseConfiguration {
   readonly format: ResponseFormats;
   readonly basePath: string;
 
-  constructor(param: ConfigurationParameters) {
+  constructor(param: ConfigurationParameters = {apiKey: ""}) {
     if (!param.apiKey) {
       throw new PassbaseError("missing apiKey");
     }
@@ -33,7 +34,8 @@ export class PassbaseConfiguration {
 
     this.apiKey = param.apiKey;
     this.format = param.format || ResponseFormats.Json;
+    const apiVersion = param.version || "v2";
     this.basePath =
-      param.basePath || "https://api.passbase.com/verification/v1";
+      param.basePath || `https://api.passbase.com/verification/${apiVersion}`;
   }
 }

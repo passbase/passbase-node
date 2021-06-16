@@ -21,6 +21,7 @@ export class Identity {
   owner: IdentityOwner | null;
   score: number;
   resources: IdentityResource[];
+  metadata: {[x: string]: any} | null;
   watchlist: Watchlist | null;
 
   constructor(obj: any) {
@@ -33,6 +34,7 @@ export class Identity {
     this.resources = (obj.resources || []).map(
       (resource: any) => new IdentityResource(resource),
     );
+    this.metadata = obj.metadata;
     this.watchlist = obj.watchlist ? new Watchlist(obj.watchlist) : null;
   }
 }

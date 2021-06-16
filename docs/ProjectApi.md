@@ -1,6 +1,6 @@
 # VerificationApi.ProjectApi
 
-All URIs are relative to *https://api.passbase.com/verification/v1*
+All URIs are relative to *https://api.passbase.com/verification/v2*
 
 | Method                                       | HTTP request      | Description          |
 | -------------------------------------------- | ----------------- | -------------------- |

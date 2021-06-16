@@ -1,6 +1,12 @@
 /* tslint: disable */
 import {PassbaseConfiguration, PassbaseClient} from "../";
 
+if (!process.env.PASSBASE_SECRET_API_KEY) {
+  throw new Error(
+    "Please run the integration tests with the PASSBASE_SECRET_API_KEY environment variable defined.",
+  );
+}
+
 const configuration = new PassbaseConfiguration({
   apiKey: process.env.PASSBASE_SECRET_API_KEY,
 });

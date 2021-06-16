@@ -10,9 +10,7 @@ describe("can be initialized", () => {
   });
 
   it("errors if the api key is not provided", () => {
-    expect(() => {
-      new PassbaseConfiguration();
-    }).toThrow(/apiKey/);
+    expect(() => new PassbaseConfiguration()).toThrow(/missing apiKey/);
   });
 
   xit("checks if the format is present", () => {
@@ -36,13 +34,22 @@ describe("can be initialized", () => {
     });
     expect(configuration.basePath).toBe("test_base_path");
   });
+  it("version can be configured", () => {
+    const configuration = new PassbaseConfiguration({
+      apiKey: "123",
+      version: "v1",
+    });
+    expect(configuration.basePath).toBe(
+      "https://api.passbase.com/verification/v1",
+    );
+  });
 
   it("defaults the basePath to prod if not present", () => {
     const configuration = new PassbaseConfiguration({
       apiKey: "123",
     });
     expect(configuration.basePath).toBe(
-      "https://api.passbase.com/verification/v1",
+      "https://api.passbase.com/verification/v2",
     );
   });
 });

@@ -1,6 +1,6 @@
 # VerificationApi.IdentityApi
 
-All URIs are relative to *https://api.passbase.com/verification/v1*
+All URIs are relative to *https://api.passbase.com/verification/v2*
 
 | Method                                                                        | HTTP request                                                                     | Description       |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------- |
@@ -153,15 +153,15 @@ client.getIdentityResourceFileById(id, resourceId, resourcefileId).then(
 
 ### Parameters
 
-| Name               | Type       | Description     | Notes |
-| ------------------ | ---------- | --------------- | ----- |
-| **id**             | **String** | Identity id     |
-| **resourceId**     | **String** | Resource id     |
-| **resourceFileId** | **String** | ResourceFile id |
+| Name               | Type       | Description      | Notes |
+| ------------------ | ---------- | ---------------- | ----- |
+| **id**             | **String** | Identity id      |
+| **resourceId**     | **String** | Resource id      |
+| **resourceFileId** | **String** | Resource file id |
 
 ### Return type
 
-[**Resource**](Resource.md)
+[**ResourceFile**](ResourceFile.md)
 
 ### Authorization
 
