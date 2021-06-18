@@ -21,8 +21,8 @@ async function main() {
   });
   const client = new PassbaseClient(config);
 
-  const settings = await client.getProjectSettings();
-  console.log(JSON.stringify(settings, null, 4));
+  const identity = await client.getIdentityById("<uuid>");
+  console.log(JSON.stringify(identity, null, 4));
 }
 
 main().catch(err => {
