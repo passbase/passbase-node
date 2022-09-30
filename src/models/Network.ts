@@ -1,7 +1,7 @@
 export class Network {
-    ip_address: string;
+    ipAddress: string;
 
     constructor(obj: any) {
-        this.ip_address = obj.ip_address
+        this.ipAddress = obj.ip_address
     }
 }
