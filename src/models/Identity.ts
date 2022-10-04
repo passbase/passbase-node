@@ -25,7 +25,7 @@ export class Identity {
   resources: IdentityResource[];
   metadata: { [x: string]: any } | null;
   watchlist: Watchlist | null;
-  network: {} | null;
+  network: Network | null;
 
   constructor(obj: any) {
     this.id = obj.id;
