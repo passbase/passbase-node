@@ -1,6 +1,8 @@
-import {IdentityOwner} from "./IdentityOwner";
-import {IdentityResource} from "./IdentityResource";
-import {Watchlist} from "./Watchlist";
+import { IdentityOwner } from "./IdentityOwner";
+import { IdentityResource } from "./IdentityResource";
+import { Watchlist } from "./Watchlist";
+import { Network } from "./Network";
+
 
 enum IdentityStatus {
   Created = "created",
@@ -21,8 +23,9 @@ export class Identity {
   owner: IdentityOwner | null;
   score: number;
   resources: IdentityResource[];
-  metadata: {[x: string]: any} | null;
+  metadata: { [x: string]: any } | null;
   watchlist: Watchlist | null;
+  network: Network | null;
 
   constructor(obj: any) {
     this.id = obj.id;
@@ -36,5 +39,6 @@ export class Identity {
     );
     this.metadata = obj.metadata;
     this.watchlist = obj.watchlist ? new Watchlist(obj.watchlist) : null;
+    this.network = obj.network ? new Network(obj.network) : null;
   }
 }
